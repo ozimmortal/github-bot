@@ -1,5 +1,8 @@
 from github import Github
-import requests,time
+import requests,time,os
+from dotenv import load_dotenv
+
+
 
 def get_quote()->str:
     try:
@@ -36,6 +39,7 @@ def github_app(token:str,repo:str)->None:
         print("Not Success")
 
 if __name__ == "__main__":
-    token = ""
-    repo = ""
+    load_dotenv()
+    token = os.environ.get("TOKEN")
+    repo = os.environ.get("REPO")
     github_app(token,repo)
